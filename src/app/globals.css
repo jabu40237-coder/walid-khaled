@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #0A0A0A;
+    --color-gold: #C8A84E;
+    --color-accent: #FFFFFF;
+    --color-gray: #333333;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-primary text-white transition-colors duration-300;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Light mode overrides */
+  .light body,
+  body.light {
+    @apply bg-white text-gray-900;
+  }
+
+  /* RTL support */
+  [dir='rtl'] {
+    text-align: right;
+  }
+
+  [dir='rtl'] .ltr-only {
+    display: none;
+  }
+
+  [dir='ltr'] .rtl-only {
+    display: none;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-gold/30 text-gold;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold/50;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline-gold outline-offset-2;
+  }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .light .glass {
+    @apply bg-black/5 border-black/10;
+  }
+
+  /* Gold gradient text */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gold-gradient;
+  }
+
+  /* Luxury button base */
+  .btn-luxury {
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-medium
+           transition-all duration-500 ease-luxury;
+  }
+
+  .btn-primary {
+    @apply btn-luxury bg-gold text-primary hover:bg-gold-400 hover:shadow-lg hover:shadow-gold/20
+           active:scale-95;
+  }
+
+  .btn-outline {
+    @apply btn-luxury border-2 border-gold text-gold hover:bg-gold hover:text-primary
+           hover:shadow-lg hover:shadow-gold/20 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply btn-luxury text-white/70 hover:text-white hover:bg-white/10 active:scale-95;
+  }
+
+  /* Section container */
+  .section {
+    @apply py-24 md:py-32 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto;
+  }
+
+  .section-tight {
+    @apply py-16 md:py-20 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4;
+  }
+
+  .section-subheading {
+    @apply text-lg text-white/60 max-w-2xl;
+  }
+
+  .light .section-subheading {
+    @apply text-gray-500;
+  }
+
+  /* Gold accent line */
+  .accent-line {
+    @apply w-20 h-1 bg-gold rounded-full mb-6;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-500 ease-luxury hover:-translate-y-1 hover:shadow-2xl hover:shadow-gold/10;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-white/10 rounded-lg;
+  }
+
+  .light .skeleton {
+    @apply bg-gray-200;
+  }
+
+  /* Shimmer */
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(200, 168, 78, 0.1) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Admin Input */
+  .admin-input {
+    @apply w-full bg-primary/50 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white
+           placeholder:text-white/20 focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/20
+           transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
