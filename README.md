@@ -212,3 +212,4 @@ In the meantime, the **Backup & Restore** feature in the admin panel lets you ex
 ## License
 
 All rights reserved. This project is proprietary software.
+
